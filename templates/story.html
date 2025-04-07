@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ topic | capitalize }} - History Storyteller</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f4f4f8, #e0e0e8);
+            color: #333;
+            line-height: 1.8;
+            padding: 30px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2a2a3e;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+        }
+        .story {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+        .story p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+        }
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .images img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .images img:hover {
+            transform: scale(1.05);
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #e94560;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            color: #c72c41;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2rem; }
+            .story { font-size: 1rem; }
+            .images img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ topic }}</h1>
+        <div class="story">
+            {% for paragraph in story.split('\n\n') %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+        <div class="images">
+            {% for image in images %}
+                <img src="{{ image }}" alt="Image related to {{ topic }}" loading="lazy">
+            {% endfor %}
+        </div>
+        <a href="/" class="back-link">Back to Search</a>
+    </div>
+</body>
+</html>
