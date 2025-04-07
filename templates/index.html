@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Storyteller - Search</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #0f3460;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #e94560;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        input[type="text"], select {
+            padding: 15px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            background: #2a2a3e;
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+        }
+        button {
+            padding: 15px;
+            background: #e94560;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: #c72c41;
+            transform: scale(1.02);
+        }
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>History Storyteller</h1>
+        <form method="POST">
+            <input type="text" name="topic" placeholder="Enter a historical topic (e.g., Roman Empire)" required>
+            <select name="tone">
+                <option value="fun">Fun & Engaging</option>
+                <option value="serious">Serious & Detailed</option>
+            </select>
+            <button type="submit">Explore History</button>
+        </form>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
